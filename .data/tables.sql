@@ -1,4 +1,4 @@
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     user_id int NOT NULL UNIQUE,
     fname varchar(50) NOT NULL,
   	lname varchar(50) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE users (
     PRIMARY KEY (user_id)
 );
 
-CREATE TABLE workout_plans (
+CREATE TABLE IF NOT EXISTS workout_plans (
     plan_id int NOT NULL UNIQUE,
     user_id int NOT NULL,
   	plan_name varchar(255) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE workout_plans (
   	FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 ); 
 
-CREATE TABLE workouts (
+CREATE TABLE IF NOT EXISTS workouts (
     workout_id int NOT NULL UNIQUE,
   	plan_id int NOT NULL,
   	wk_date date NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE workouts (
   	FOREIGN KEY (plan_id) REFERENCES workout_plans(plan_id) ON DELETE CASCADE
 );  
 
-CREATE TABLE exercises (
+CREATE TABLE IF NOT EXISTS exercises (
     exercise_id int NOT NULL UNIQUE,
   	workout_id int NOT NULL,
   	api_id int NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE exercises (
     PRIMARY KEY (exercise_id),
   	FOREIGN KEY (workout_id) REFERENCES workouts(workout_id) ON DELETE CASCADE
 );  
-CREATE TABLE workout_performance (
+CREATE TABLE IF NOT EXISTS workout_performance (
     perf_id int NOT NULL,
   	exercise_id int NOT NULL,
   	actual_sets int NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE workout_performance (
     PRIMARY KEY (perf_id),
   	FOREIGN KEY (exercise_id) REFERENCES exercises(exercise_id) ON DELETE CASCADE
 );  
-CREATE TABLE feedback (
+CREATE TABLE IF NOT EXISTS feedback (
     feedback_id int NOT NULL UNIQUE,
   	exercise_id int NOT NULL,
   	user_id int NOT NULL,
