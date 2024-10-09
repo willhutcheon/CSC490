@@ -26,6 +26,9 @@ CREATE TABLE IF NOT EXISTS workouts (
   	plan_id int NOT NULL,
   	wk_date date NOT NULL,
   	cals int NOT NULL,
+	type varchar(50) NOT NULL,
+	intensity varchar(50) NOT NULL,
+	duration int NOT NULL,
     PRIMARY KEY (workout_id),
   	FOREIGN KEY (plan_id) REFERENCES workout_plans(plan_id) ON DELETE CASCADE
 );  
@@ -60,6 +63,16 @@ CREATE TABLE IF NOT EXISTS feedback (
   	FOREIGN KEY (exercise_id) REFERENCES exercises(exercise_id) ON DELETE CASCADE ,
   	FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );  
+
+CREATE TABLE IF NOT EXISTS user_preferences (
+    preference_id int NOT NULL UNIQUE,
+    user_id int NOT NULL,
+    preferred_types varchar(255),
+    preferred_intensity varchar(50),
+    preferred_duration int,
+    PRIMARY KEY (preference_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
 
 
 INSERT INTO `users` (`user_id`,`fname`,`lname`,`username`,`email`,`fit_goal`,`exp_level`,`created_at`)
