@@ -126,9 +126,9 @@ VALUES
   (400,4,3601,7),
   (500,5,2624,7);
 
-INSERT INTO 'exercises' ('exercise_id','workout_id','api_id','plan_sets','plan_reps','plan_weight','rest_time','exercise_name')
+INSERT INTO `exercises` ('exercise_id','workout_id','api_id','plan_sets','plan_reps','plan_weight','rest_time','exercise_name')
 VALUES (6, 48867, 1024, 4, 12, 50, 60, 'Chest Press'),
        (7, 39681, 1025, 3, 15, 80, 90, 'Squats');
 
-INSERT INTO 'user_preferences' ('preference_id', 'user_id', 'preferred_types', 'preferred_intensity', 'preferred_duration', 'preferred_exercise')
+INSERT INTO `user_preferences` ('preference_id', 'user_id', 'preferred_types', 'preferred_intensity', 'preferred_duration', 'preferred_exercise')
 VALUES (1, 3601, "Strength", "Advanced", 20, "Chest Press");
