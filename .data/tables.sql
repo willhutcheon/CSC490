@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS exercises (
     plan_reps int NOT NULL,
     plan_weight decimal NOT NULL,
     rest_time int NOT NULL,
+    exercise_name varchar(255) NOT NULL, 
     PRIMARY KEY (exercise_id),
     FOREIGN KEY (workout_id) REFERENCES workouts(workout_id) ON DELETE CASCADE
 );  
@@ -70,6 +71,7 @@ CREATE TABLE IF NOT EXISTS user_preferences (
     preferred_types varchar(255),
     preferred_intensity varchar(50),
     preferred_duration int,
+    preferred_exercise varchar(255),
     PRIMARY KEY (preference_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
@@ -123,3 +125,8 @@ VALUES
   (300,3,2710,8),
   (400,4,3601,7),
   (500,5,2624,7);
+
+INSERT INTO 'exercises' ('exercise_id','workout_id','api_id','plan_sets','plan_reps','plan_weight','rest_time','exercise_name')
+VALUES (6, 48867, 1024, 4, 12, 50, 60, 'Chest Press'),
+       (7, 39681, 1025, 3, 15, 80, 90, 'Squats');
+
