@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1>Recommended Workouts</h1>
+    <ul>
+        <% if (workouts && workouts.length > 0) { %>
+            <% workouts.forEach(function(workout) { %>
+                <li><%= workout.type %> - <%= workout.intensity %> - <%= workout.duration %> mins</li>
+            <% }); %>
+        <% } else { %>
+            <li>No workouts match your preferences.</li>
+        <% } %>
+    </ul>
+    <a href="/allusers">Back to User List</a>
+</body>
+</html>
