@@ -124,4 +124,4 @@ VALUES
 
 INSERT INTO `user_preferences` (`preference_id`, `user_id`, `preferred_types`, `preferred_intensity`, `preferred_duration`, `preferred_exercise`)
 VALUES
-  (1, 3601, "Strength", "Advanced", 20, "Chest Press");
+  (1, 3601, "Strength", "Advanced", 15, "Chest Press");
