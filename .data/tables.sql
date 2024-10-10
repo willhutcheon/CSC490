@@ -93,11 +93,11 @@ VALUES
 
 INSERT INTO `workouts` (`workout_id`,`plan_id`,`wk_date`,`cals`,`type`,`intensity`,`duration`)
 VALUES
-  (48867,8257,"2024-10-14","772","weighted" ,"low" ,"30" ),
-  (39681,1299,"2025-1-27","965","cardio" ,"medium" ,"25" ),
-  (94137,1968,"2024-41-8","353","weighted" ,"high" ,"20" ),
-  (83779,5749,"2025-59-16","147","cardio" ,"low" ,"15" ),
-  (65927,5837,"2025-20-5","533","sports" ,"medium" ,"10" );
+  (48867,8257,"2024-10-14","772","Endurance" ,"Beginner" ,"30" ),
+  (39681,1299,"2025-1-27","965","Hypertrophy" ,"Advanced" ,"25" ),
+  (94137,1968,"2024-41-8","353","Strength" ,"Intermediate" ,"20" ),
+  (83779,5749,"2025-59-16","147","Endurance" ,"Beginner" ,"15" ),
+  (65927,5837,"2025-20-5","533","Strength" ,"Advanced" ,"10" );
 
 INSERT INTO `exercises` (`exercise_id`,`workout_id`,`api_id`,`plan_sets`,`plan_reps`,`plan_weight`,`rest_time`)
 VALUES
