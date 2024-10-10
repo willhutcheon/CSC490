@@ -21,7 +21,7 @@ function recommendWorkouts(userPreferences, workouts) {
     return workouts.filter(workout => {
         const matchesType = workout.type.includes(userPreferences.fit_goal);
         const matchesLevel = workout.intensity === userPreferences.exp_level;
-        // Need to add other filters like duration
+        const matchesDuration = !userPreferences.preferred_duration || workout.duration === userPreferences.preferred_duration;
 
         // Need to actually recommend an exercise
         const matchesExercise = !userPreferences.preferred_exercise || workout.exercise_name === userPreferences.preferred_exercise;
@@ -33,7 +33,7 @@ function recommendWorkouts(userPreferences, workouts) {
         // Decision trees?
 
         // return matchesType && matchesLevel;
-        return matchesType && matchesLevel && matchesExercise;
+        return matchesType && matchesLevel && matchesDuration && matchesExercise;
         // Now populate user_preferences table w relevant data
     });
 }
@@ -44,9 +44,12 @@ async function getRecommendedWorkouts(req, res, next) {
         if (isNaN(userId)) {
             throw new Error('Invalid User ID');
         }
-
         const userPreferences = await model.getUserPreferences(userId); // Await the promise
-        const workouts = await model.getWorkouts(); // Await the promise
+        if (!userPreferences) {
+            throw new Error('No preferences found for user.');
+        }
+        // const workouts = await model.getWorkouts(); // Await the promise
+        const workouts = await model.getWorkouts(userId); // Await the promise
         const recommendedWorkouts = recommendWorkouts(userPreferences, workouts);
 
         res.render("recommended-workouts", {
