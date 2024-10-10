@@ -101,14 +101,6 @@ VALUES
   (83779,5749,"2025-59-16","147","Strength" ,"Advanced" ,"15" ),
   (65927,5837,"2025-20-5","533","Endurance" ,"Beginner" ,"10" );
 
-INSERT INTO `exercises` (`exercise_id`,`workout_id`,`api_id`,`plan_sets`,`plan_reps`,`plan_weight`,`rest_time`)
-VALUES
-  (1,48867,3972,13,13,24.5,2),
-  (2,39681,5858,4,11,27.5,23),
-  (3,94137,6433,2,11,31.00,20),
-  (4,83779,9233,10,3,18.5,19),
-  (5,65927,2903,13,11,24.5,25);
-
 INSERT INTO `workout_performance` (`perf_id`,`exercise_id`,`actual_sets`,`actual_reps`,`actual_weight`,`perf_date`)
 VALUES
   (10,1,3,13,13.5,"2019-02-09 02:16:10"),
