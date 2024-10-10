@@ -22,12 +22,19 @@ function recommendWorkouts(userPreferences, workouts) {
         const matchesType = workout.type.includes(userPreferences.fit_goal);
         const matchesLevel = workout.intensity === userPreferences.exp_level;
         // Need to add other filters like duration
+
         // Need to actually recommend an exercise
+        const matchesExercise = !userPreferences.preferred_exercise || workout.exercise_name === userPreferences.preferred_exercise;
+        
         // Need to consider users injury status
         // Need to consider users exercise history and trends, what burns most cals for them, ratings, etc.
         // DB column that can be incremented to show how many times a user does a workout? And then prioritizes
         // -> workouts that are done often
-        return matchesType && matchesLevel;
+        // Decision trees?
+
+        // return matchesType && matchesLevel;
+        return matchesType && matchesLevel && matchesExercise;
+        // Now populate user_preferences table w relevant data
     });
 }
 

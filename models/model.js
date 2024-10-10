@@ -15,7 +15,8 @@ async function getUserPreferences(userId) {
 }
 
 async function getWorkouts() {
-    const sql = "SELECT * FROM workouts;";
+    // const sql = "SELECT * FROM workouts;";
+    const sql = 'SELECT w.*, e.exercise_name FROM workouts w JOIN exercises e ON w.workout_id = e.exercise_id;';
     return await db.all(sql); // Await the promise
 }
 
