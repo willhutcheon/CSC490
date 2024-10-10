@@ -77,11 +77,11 @@ CREATE TABLE IF NOT EXISTS user_preferences (
 
 INSERT INTO `users` (`user_id`,`fname`,`lname`,`username`,`email`,`fit_goal`,`exp_level`,`created_at`)
 VALUES
-  (7572,"Ursa","Moses","Joseph F. Dudley","vulputate.dui.nec@icloud.ca","Strength","Beginner","2025-01-09 01:16:10"),
-  (9014,"Nora","Anthony","Nadine L. Harrison","nunc.sed@aol.com","Endurance","Advanced","2024-11-09 01:16:10"),
-  (2710,"Lucius","Puckett","Benedict Y. Meadows","cras.sed@yahoo.net","Hypertrophy","Beginner","2015-01-09 01:16:10"),
+  (7572,"Ursa","Moses","Joseph F. Dudley","vulputate.dui.nec@icloud.ca","Strength","Advanced","2025-01-09 01:16:10"),
+  (9014,"Nora","Anthony","Nadine L. Harrison","nunc.sed@aol.com","Endurance","Beginner","2024-11-09 01:16:10"),
+  (2710,"Lucius","Puckett","Benedict Y. Meadows","cras.sed@yahoo.net","Hypertrophy","Intermediate","2015-01-09 01:16:10"),
   (3601,"Connor","Hurst","Chaim D. Guy","vel.arcu@aol.net","Strength","Advanced","2024-01-09 01:16:10"),
-  (2624,"Lila","Henry","Bryar Y. Richards","egestas.urna@icloud.net","Endurance","Intermediate","2020-01-09 01:16:10");
+  (2624,"Lila","Henry","Bryar Y. Richards","egestas.urna@icloud.net","Endurance","Beginner","2020-01-09 01:16:10");
 
 INSERT INTO `workout_plans` (`plan_id`,`user_id`,`plan_name`,`start_date`,`end_date`,`active`)
 VALUES
@@ -93,11 +93,11 @@ VALUES
 
 INSERT INTO `workouts` (`workout_id`,`plan_id`,`wk_date`,`cals`,`type`,`intensity`,`duration`)
 VALUES
-  (48867,8257,"2024-10-14","772","Endurance" ,"Beginner" ,"30" ),
-  (39681,1299,"2025-1-27","965","Hypertrophy" ,"Advanced" ,"25" ),
-  (94137,1968,"2024-41-8","353","Strength" ,"Intermediate" ,"20" ),
-  (83779,5749,"2025-59-16","147","Endurance" ,"Beginner" ,"15" ),
-  (65927,5837,"2025-20-5","533","Strength" ,"Advanced" ,"10" );
+  (48867,8257,"2024-10-14","772","Strength" ,"Advanced" ,"30" ),
+  (39681,1299,"2025-1-27","965","Endurance" ,"Beginner" ,"25" ),
+  (94137,1968,"2024-41-8","353","Hypertrophy" ,"Intermediate" ,"20" ),
+  (83779,5749,"2025-59-16","147","Strength" ,"Advanced" ,"15" ),
+  (65927,5837,"2025-20-5","533","Endurance" ,"Beginner" ,"10" );
 
 INSERT INTO `exercises` (`exercise_id`,`workout_id`,`api_id`,`plan_sets`,`plan_reps`,`plan_weight`,`rest_time`)
 VALUES
