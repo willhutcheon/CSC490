@@ -161,3 +161,6 @@ VALUES
 
 INSERT INTO user_preferences (preference_id, user_id, preferred_types, preferred_intensity, preferred_duration, preferred_exercise)
 VALUES (1, 3601, 'Strength', 'Advanced', NULL, 'Bench Press');
+
+INSERT INTO user_feedback (user_id, workout_id, rating, calories_burned)
+VALUES (3601, 1, 5, 100);
