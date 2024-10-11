@@ -77,6 +77,21 @@ CREATE TABLE IF NOT EXISTS user_preferences (
 );
 
 
+
+
+CREATE TABLE IF NOT EXISTS user_feedback (
+    user_id INT,
+    workout_id INT,
+    rating INT,
+    calories_burned INT,
+    PRIMARY KEY (user_id, workout_id)
+);
+
+
+
+
+
+
 INSERT INTO `users` (`user_id`, `fname`, `lname`, `username`, `email`, `fit_goal`, `exp_level`, `created_at`)
 VALUES
   (7572, "Ursa", "Moses", "Joseph F. Dudley", "vulputate.dui.nec@icloud.ca", "Strength", "Advanced", "2025-01-09 01:16:10"),
