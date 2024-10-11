@@ -125,3 +125,24 @@ VALUES
 INSERT INTO `user_preferences` (`preference_id`, `user_id`, `preferred_types`, `preferred_intensity`, `preferred_duration`, `preferred_exercise`)
 VALUES
   (1, 3601, "Strength", "Advanced", 15, "Chest Press");
+
+
+
+
+
+
+INSERT INTO workout_plans (plan_id, user_id, plan_name, start_date, end_date, active)
+VALUES (1, 3601, 'Strength Training Plan', '2024-10-01', '2024-12-31', TRUE);
+
+INSERT INTO workouts (workout_id, plan_id, wk_date, cals, type, intensity, duration)
+VALUES 
+(1, 1, '2024-10-01', 300, 'Strength', 'Advanced', 45),
+(2, 1, '2024-10-08', 400, 'Strength', 'Advanced', 60);
+
+INSERT INTO exercises (exercise_id, workout_id, api_id, plan_sets, plan_reps, plan_weight, rest_time, exercise_name)
+VALUES 
+(8, 1, 101, 4, 12, 50.0, 60, 'Bench Press'),
+(9, 1, 102, 3, 10, 60.0, 90, 'Deadlift');
+
+INSERT INTO user_preferences (preference_id, user_id, preferred_types, preferred_intensity, preferred_duration, preferred_exercise)
+VALUES (1, 3601, 'Strength', 'Advanced', NULL, 'Bench Press');
