@@ -16,7 +16,6 @@ async function getAllUsers(req, res, next) {
         next(error);
     }
 }
-
 function recommendWorkouts(userPreferences, workouts) {
     return workouts.filter(workout => {
         const matchesType = workout.type.includes(userPreferences.fit_goal);
@@ -37,7 +36,6 @@ function recommendWorkouts(userPreferences, workouts) {
         // Now populate user_preferences table w relevant data
     });
 }
-
 async function getRecommendedWorkouts(req, res, next) {
     try {
         const userId = parseInt(req.query.user_id, 10);
@@ -73,7 +71,6 @@ async function submitFeedback(req, res, next) {
         next(error);
     }
 }
-
 module.exports = {
     getAllUsers,
     recommendWorkouts,

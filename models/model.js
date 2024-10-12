@@ -5,7 +5,6 @@ async function getAllUsers() {
     let sql = "SELECT * FROM users;";
     return await db.all(sql); // Await the promise
 };
-
 async function getUserPreferences(userId) {
     console.log("Fetching preferences for user ID:", userId);
     //const sql = "SELECT fit_goal, exp_level FROM users WHERE user_id = ?;";
@@ -19,7 +18,6 @@ async function getUserPreferences(userId) {
     console.log("User preferences fetched:", row);
     return row; // Return the fetched row
 }
-
 async function getWorkouts(userId) {
     // const sql = "SELECT * FROM workouts;";
     const sql = `
@@ -48,7 +46,6 @@ async function getUserFeedback(userId, workoutId) {
     `;
     return await db.get(sql, [userId, workoutId]);
 }
-
 async function storeUserFeedback(userId, workoutId, rating, caloriesBurned) {
     const sql = `
         INSERT INTO user_feedback (user_id, workout_id, rating, calories_burned)
@@ -58,13 +55,10 @@ async function storeUserFeedback(userId, workoutId, rating, caloriesBurned) {
     `;
     return await db.run(sql, [userId, workoutId, rating, caloriesBurned]);
 }
-
 let QTable = {};
-
 function getQValue(state, action) {
     return QTable[state]?.[action] || 0;
 }
-
 function updateQValue(state, action, reward, nextState) {
     const learningRate = 0.1;
     const discountFactor = 0.9;
@@ -74,13 +68,11 @@ function updateQValue(state, action, reward, nextState) {
     if (!QTable[state]) QTable[state] = {};
     QTable[state][action] = newQ;
 }
-
 function calculateReward(feedback) {
     const ratingReward = feedback.rating;
     const performanceReward = feedback.calories_burned / 100;
     return ratingReward + performanceReward;
 }
-
 function chooseAction(state, availableWorkouts) {
     const epsilon = 0.1; // Exploration-exploitation trade-off
     if (Math.random() < epsilon) {
@@ -94,7 +86,6 @@ function chooseAction(state, availableWorkouts) {
         }, null);
     }
 }
-
 async function recommendWorkoutsWithRL(userPreferences, workouts, userId) {
     const state = userPreferences.fit_goal + userPreferences.exp_level; // Simple state representation
     const availableWorkouts = workouts;
@@ -108,7 +99,6 @@ async function recommendWorkoutsWithRL(userPreferences, workouts, userId) {
     updateQValue(state, recommendedWorkout.workout_id, reward, nextState);
     return recommendedWorkout;
 }
-
 module.exports = {
     getAllUsers,
     getUserPreferences,
