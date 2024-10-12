@@ -62,8 +62,21 @@ async function getRecommendedWorkouts(req, res, next) {
     }
 }
 
+
+// added
+async function submitFeedback(req, res, next) {
+    try {
+        const { userId, workoutId, rating, caloriesBurned } = req.body;
+        await model.storeUserFeedback(userId, workoutId, rating, caloriesBurned);
+        res.send({ success: true });
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports = {
     getAllUsers,
     recommendWorkouts,
-    getRecommendedWorkouts
+    getRecommendedWorkouts,
+    submitFeedback
 };

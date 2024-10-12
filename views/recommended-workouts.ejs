@@ -11,6 +11,15 @@
         <% if (workouts && workouts.length > 0) { %>
             <% workouts.forEach(function(workout) { %>
                 <li><%= workout.exercise_name %> - <%= workout.type %> - <%= workout.intensity %> - <%= workout.duration %> mins</li>
+                <form action="/feedback" method="post">
+                    <input type="hidden" name="userId" value="<%= user.user_id %>">
+                    <input type="hidden" name="workoutId" value="<%= workout.workout_id %>">
+                    <label for="rating">Rate this workout:</label>
+                    <input type="number" name="rating" min="1" max="5">
+                    <label for="caloriesBurned">Calories burned:</label>
+                    <input type="number" name="caloriesBurned">
+                    <button type="submit">Submit Feedback</button>
+                </form>
             <% }); %>
         <% } else { %>
             <li>No workouts match your preferences.</li>
@@ -19,3 +28,31 @@
     <a href="/allusers">Back to User List</a>
 </body>
 </html>
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1>Recommended Workouts</h1>
+    <ul>
+        <% if (workouts && workouts.length > 0) { %>
+            <% workouts.forEach(function(workout) { %>
+                <li><%= workout.exercise_name %> - <%= workout.type %> - <%= workout.intensity %> - <%= workout.duration %> mins</li>
+            <% }); %>
+        <% } else { %>
+            <li>No workouts match your preferences.</li>
+        <% } %>
+    </ul>
+    <a href="/allusers">Back to User List</a>
+</body>
+</html> -->
