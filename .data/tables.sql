@@ -139,21 +139,28 @@ VALUES
 
 INSERT INTO `user_preferences` (`preference_id`, `user_id`, `preferred_types`, `preferred_intensity`, `preferred_duration`, `preferred_exercise`)
 VALUES
-  (1, 3601, "Strength", "Advanced", 15, "Chest Press");
+  (1, 3601, "Strength", "Advanced", 15, "Chest Press"),
+(2, 2710, "Hypertrophy", "Intermediate", 20, "Bench Press"),
+(3, 2624, "Enndurance", "Beginner", 10, "Squats"),
+(4, 7572, "Strength", "Advanced", 30, "Deadlift"),
+(5, 9014, "Endurance", "Beginner", 25, "Squats");
 
 
 
-
-
-
-INSERT INTO workout_plans (plan_id, user_id, plan_name, start_date, end_date, active)
+ERT INTO workout_plans (plan_id, user_id, plan_name, start_date, end_date, active)
 VALUES (1, 3601, 'Strength Training Plan', '2024-10-01', '2024-12-31', TRUE);
+       
 
 INSERT INTO workouts (workout_id, plan_id, wk_date, cals, type, intensity, duration)
 VALUES 
 (1, 1, '2024-10-01', 300, 'Strength', 'Advanced', 45),
-(2, 1, '2024-10-08', 400, 'Strength', 'Advanced', 60);
-
+/*
+    (2, 2, '2024-10-08', 400, 'Strength', 'Advanced', 60),
+(3, 3, '2024-10-01', 500, 'Endurance', 'Beginner', 120),
+(4, 4, '2024-10-08', 600, 'Endurance', 'Beginner', 125),
+(5, 5, '2024-10-01', 250, 'Hypertrophy', 'Intermediate', 30),
+(6, 6, '2024-10-08', 450, 'Hypertrophy', 'Intermediate', 60);
+*/
 INSERT INTO exercises (exercise_id, workout_id, api_id, plan_sets, plan_reps, plan_weight, rest_time, exercise_name)
 VALUES 
 (8, 1, 101, 4, 12, 50.0, 60, 'Bench Press'),
@@ -163,4 +170,8 @@ INSERT INTO user_preferences (preference_id, user_id, preferred_types, preferred
 VALUES (1, 3601, 'Strength', 'Advanced', NULL, 'Bench Press');
 
 INSERT INTO user_feedback (user_id, workout_id, rating, calories_burned)
-VALUES (3601, 1, 5, 100);
+VALUES (3601, 1, 5, 100),
+    (2710, 94137, 6, 150),
+    (2624, 65927, 7, 200),
+    (9014, 39681, 8, 250),
+    (7572, 48867, 9, 300);
