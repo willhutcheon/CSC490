@@ -17,4 +17,4 @@ module.exports = {
     all,
     get,
     run,
-};
+}

@@ -86,4 +86,4 @@ module.exports = {
     recommendWorkouts,
     getRecommendedWorkouts,
     submitFeedback
-};
+}
