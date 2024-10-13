@@ -48,10 +48,20 @@ async function getRecommendedWorkouts(req, res, next) {
         }
         // const workouts = await model.getWorkouts(); // Await the promise
         const workouts = await model.getWorkouts(userId); // Await the promise
-        const recommendedWorkouts = recommendWorkouts(userPreferences, workouts);
+        if (!workouts || workouts.length === 0) {
+            throw new Error('No workouts available.');
+        }
+        //const recommendedWorkouts = recommendWorkouts(userPreferences, workouts);
+        
+        // added
+        const recommendedWorkout = await model.recommendWorkoutsWithRL(userPreferences, workouts, userId);
 
         res.render("recommended-workouts", {
-            workouts: recommendedWorkouts,
+            // workouts: recommendedWorkouts,
+            
+            // added
+            workouts: [recommendedWorkout],
+
             title: 'Recommended Workouts',
             user: { user_id: userId }
         });
