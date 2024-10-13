@@ -4,7 +4,7 @@ const db = require("../models/db-conn");
 async function getAllUsers() {
     let sql = "SELECT * FROM users;";
     return await db.all(sql); // Await the promise
-};
+}
 async function getUserPreferences(userId) {
     console.log("Fetching preferences for user ID:", userId);
     //const sql = "SELECT fit_goal, exp_level FROM users WHERE user_id = ?;";
