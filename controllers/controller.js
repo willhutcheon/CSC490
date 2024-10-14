@@ -22,7 +22,6 @@ function recommendWorkouts(userPreferences, workouts) {
         const matchesLevel = workout.intensity === userPreferences.exp_level;
         const matchesDuration = !userPreferences.preferred_duration || workout.duration === userPreferences.preferred_duration;
 
-        // Need to actually recommend an exercise
         const matchesExercise = !userPreferences.preferred_exercise || workout.exercise_name === userPreferences.preferred_exercise;
         
         // Need to consider users injury status
@@ -87,3 +86,10 @@ module.exports = {
     getRecommendedWorkouts,
     submitFeedback
 }
+
+
+// todo: allow users to crud accounts
+// progress tracking
+
+// similar exercises should have the same workout_id in the exercises table ie legs should all have workout_id 2
+// match types and intensities in the workouts table with the correct corresponding workout_id value ie bench press workout_id values should be correlated to type strength in the workouts table
