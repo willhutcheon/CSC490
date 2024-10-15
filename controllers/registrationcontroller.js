@@ -11,7 +11,6 @@ const model = require("../models/registrationmodel");
 async function createUser(req, res, next) {
     let { user_id, fname, lname, username, email, fit_goal, exp_level } = req.body;
     user_id = parseInt(user_id, 10);
-
     console.log("Received parameters:", { user_id, fname, lname, username, email, fit_goal, exp_level });
     if (isNaN(user_id)) {
         console.error("user_id is not a number:", req.body.user_id);
@@ -32,8 +31,6 @@ async function createUser(req, res, next) {
         res.status(400).send({ error: "Missing required fields" });
     }
 }
-
-
 async function updateUser(req, res, next) {
     let { user_id, fname, lname, username, email, fit_goal, exp_level } = req.body;
     user_id = parseInt(user_id, 10);
