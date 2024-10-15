@@ -10,15 +10,16 @@ const model = require("../models/registrationmodel");
 
 async function createUser(req, res, next) {
     let { user_id, fname, lname, username, email, fit_goal, exp_level } = req.body;
-    // let user_id = req.body.user_id;
-    // let fname = req.body.fname;
-    // let lname = req.body.lname;
-    // let username = req.body.username;
-    // let email = req.body.email;
-    // let fit_goal = req.body.fit_goal;
-    // let exp_level = req.body.exp_level;
+    user_id = parseInt(user_id, 10);
+
+    console.log("Received parameters:", { user_id, fname, lname, username, email, fit_goal, exp_level });
+    if (isNaN(user_id)) {
+        console.error("user_id is not a number:", req.body.user_id);
+        return res.status(400).send({ error: "User ID must be a number" });
+    }
     if (user_id && fname && lname && username && email && fit_goal && exp_level) {
-        let params = [user_id, fname, lname, username, email, fit_goal, exp_level];
+        let params = [user_id, fname, lname, username, email, fit_goal, exp_level, new Date().toISOString()];
+        console.log("Params for DB:", params);
         try {
             await model.createUser(params);
             res.status(201).send({ message: "User created successfully" });
