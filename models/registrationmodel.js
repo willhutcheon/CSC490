@@ -22,7 +22,6 @@ async function updateUser(params) {
     `;
     return await db.run(sql, params);
 }
-// working on
 async function updatePreferences(params) {
     let sql = `
         UPDATE user_preferences

@@ -12,7 +12,6 @@ router.get('/users/create', (req, res) => {
 router.post('/users/create', registrationController.createUser);
 router.get('/users/update/:user_id', registrationController.getUser);
 router.post('/users/update', registrationController.updateUser);
-// working on
 router.get('/preferences/update/:user_id', registrationController.getPreferences);
 router.post('/preferences/update', registrationController.updatePreferences);
 module.exports = router;

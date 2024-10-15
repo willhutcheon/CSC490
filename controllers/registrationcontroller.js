@@ -52,7 +52,6 @@ async function updateUser(req, res, next) {
         res.status(400).send({ error: "Missing required fields" });
     }
 }
-// working on
 async function updatePreferences(req, res, next) {
     let { user_id, preferred_types, preferred_intensity, preferred_duration, preferred_exercise } = req.body;
     user_id = parseInt(user_id, 10);
