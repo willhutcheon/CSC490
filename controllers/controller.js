@@ -10,7 +10,7 @@ const model = require("../models/model");
 
 async function getAllUsers(req, res, next) {
     try {
-        let users = await model.getAllUsers(); // Await the promise
+        let users = await model.getAllUsers();
         res.render("users-all", { users: users, title: 'All Users', user: req.user });
     } catch (error) {
         next(error);
@@ -42,21 +42,19 @@ async function getRecommendedWorkouts(req, res, next) {
         if (isNaN(userId)) {
             throw new Error('Invalid User ID');
         }
-        const userPreferences = await model.getUserPreferences(userId); // Await the promise
+        const userPreferences = await model.getUserPreferences(userId);
         if (!userPreferences) {
             throw new Error('No preferences found for user.');
         }
-        // const workouts = await model.getWorkouts(); // Await the promise
-        const workouts = await model.getWorkouts(userId); // Await the promise
+        // const workouts = await model.getWorkouts();
+        const workouts = await model.getWorkouts(userId);
         if (!workouts || workouts.length === 0) {
             throw new Error('No workouts available.');
         }
-        //const recommendedWorkouts = recommendWorkouts(userPreferences, workouts);
-        // added
+        // const recommendedWorkouts = recommendWorkouts(userPreferences, workouts);
         const recommendedWorkout = await model.recommendWorkoutsWithRL(userPreferences, workouts, userId);
         res.render("recommended-workouts", {
             // workouts: recommendedWorkouts,
-            // added
             workouts: [recommendedWorkout],
             title: 'Recommended Workouts',
             user: { user_id: userId }
@@ -65,7 +63,6 @@ async function getRecommendedWorkouts(req, res, next) {
         next(error);
     }
 }
-// added
 async function submitFeedback(req, res, next) {
     try {
         const { userId, workoutId, rating, caloriesBurned } = req.body;
