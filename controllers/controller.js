@@ -81,6 +81,7 @@ module.exports = {
 
 
 // todo: allow users to crud accounts, progress tracking, injuries / injury status and accomidations, goals and goal tracking
+// todo: allow users to crud workouts, exercises, and preferences
 
 // db notes
 // similar exercises should have the same workout_id in the exercises table ie legs should all have workout_id 2
