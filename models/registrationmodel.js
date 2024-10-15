@@ -22,9 +22,24 @@ async function updateUser(params) {
     `;
     return await db.run(sql, params);
 }
+// working on
+async function updatePreferences(params) {
+    let sql = `
+        UPDATE user_preferences
+        SET preferred_types = ?, preferred_intensity = ?, preferred_duration = ?, preferred_exercise = ?
+        WHERE user_id = ?;
+    `;
+    return await db.run(sql, params);
+}
 async function getUser(user_id) {
     let sql = `
         SELECT * FROM users WHERE user_id = ?;
+    `;
+    return await db.get(sql, user_id);
+}
+async function getPreferences(user_id) {
+    let sql = `
+        SELECT * FROM user_preferences WHERE user_id = ?;
     `;
     return await db.get(sql, user_id);
 }
@@ -32,5 +47,7 @@ module.exports = {
     createUser,
     deleteUser,
     updateUser,
-    getUser
+    getUser,
+    updatePreferences,
+    getPreferences
 }
