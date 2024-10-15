@@ -14,6 +14,8 @@ async function deleteUser(user_id) {
     `;
     return await db.run(sql, [user_id]);
 }
+
+
 async function updateUser(params) {
     let sql = `
         UPDATE users
@@ -22,8 +24,17 @@ async function updateUser(params) {
     `;
     return await db.run(sql, params);
 }
+async function getUser(user_id) {
+    let sql = `
+        SELECT * FROM users WHERE user_id = ?;
+    `;
+    return await db.get(sql, user_id);
+}
+
+
 module.exports = {
     createUser,
     deleteUser,
-    updateUser
+    updateUser,
+    getUser
 }

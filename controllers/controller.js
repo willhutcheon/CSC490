@@ -82,8 +82,10 @@ module.exports = {
 
 // todo: allow users to crud accounts, progress tracking, injuries / injury status and accomidations, goals and goal tracking
 // todo: allow users to crud workouts, exercises, and preferences
+// todo: consider injury status in RL
 
 // db notes
 // similar exercises should have the same workout_id in the exercises table ie legs should all have workout_id 2
 // match types and intensities in the workouts table with the correct corresponding workout_id value in exercises table ie bench press workout_id values in exercises should be correlated to type strength in the workouts table
 // exercise_id's can / must be different as they are different exercises
+// need injuries table, might just need injuries column in user_preferences instead

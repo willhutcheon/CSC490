@@ -10,6 +10,10 @@ router.get('/users/create', (req, res) => {
     res.render('create-user', { error: null, message: null });
 });
 router.post('/users/create', registrationController.createUser);
+router.get('/users/update/:user_id', registrationController.getUser);
+router.post('/users/update', registrationController.updateUser);
 module.exports = router;
 
 // http://localhost:3000/recommendations?user_id=3601
+// http://localhost:3000/users/create
+// http://localhost:3000/users/update/2624
