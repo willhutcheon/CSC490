@@ -14,7 +14,16 @@ async function deleteUser(user_id) {
     `;
     return await db.run(sql, [user_id]);
 }
+async function updateUser(params) {
+    let sql = `
+        UPDATE users
+        SET fname = ?, lname = ?, username = ?, email = ?, fit_goal = ?, exp_level = ?
+        WHERE user_id = ?;
+    `;
+    return await db.run(sql, params);
+}
 module.exports = {
     createUser,
-    deleteUser
+    deleteUser,
+    updateUser
 }
