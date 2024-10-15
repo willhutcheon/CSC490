@@ -33,10 +33,6 @@ async function getWorkouts(userId) {
     `;
     return await db.all(sql, userId); // Await the promise
 }
-
-
-
-
 //added
 async function getUserFeedback(userId, workoutId) {
     const sql = `

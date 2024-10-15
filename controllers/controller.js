@@ -16,7 +16,8 @@ async function getAllUsers(req, res, next) {
         next(error);
     }
 }
-function recommendWorkouts(userPreferences, workouts) {
+// content based filtering
+/* function recommendWorkouts(userPreferences, workouts) {
     return workouts.filter(workout => {
         const matchesType = workout.type.includes(userPreferences.fit_goal);
         const matchesLevel = workout.intensity === userPreferences.exp_level;
@@ -34,7 +35,7 @@ function recommendWorkouts(userPreferences, workouts) {
         return matchesType && matchesLevel && matchesDuration && matchesExercise;
         // Now populate user_preferences table w relevant data
     });
-}
+} */
 async function getRecommendedWorkouts(req, res, next) {
     try {
         const userId = parseInt(req.query.user_id, 10);
@@ -51,16 +52,12 @@ async function getRecommendedWorkouts(req, res, next) {
             throw new Error('No workouts available.');
         }
         //const recommendedWorkouts = recommendWorkouts(userPreferences, workouts);
-        
         // added
         const recommendedWorkout = await model.recommendWorkoutsWithRL(userPreferences, workouts, userId);
-
         res.render("recommended-workouts", {
             // workouts: recommendedWorkouts,
-            
             // added
             workouts: [recommendedWorkout],
-
             title: 'Recommended Workouts',
             user: { user_id: userId }
         });
@@ -68,8 +65,6 @@ async function getRecommendedWorkouts(req, res, next) {
         next(error);
     }
 }
-
-
 // added
 async function submitFeedback(req, res, next) {
     try {
@@ -82,14 +77,13 @@ async function submitFeedback(req, res, next) {
 }
 module.exports = {
     getAllUsers,
-    recommendWorkouts,
+    // recommendWorkouts,
     getRecommendedWorkouts,
     submitFeedback
 }
 
 
-// todo: allow users to crud accounts
-// progress tracking
+// todo: allow users to crud accounts, progress tracking, injuries / injury status and accomidations, goals and goal tracking
 
 // similar exercises should have the same workout_id in the exercises table ie legs should all have workout_id 2
 // match types and intensities in the workouts table with the correct corresponding workout_id value ie bench press workout_id values should be correlated to type strength in the workouts table
