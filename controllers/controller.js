@@ -85,5 +85,7 @@ module.exports = {
 
 // todo: allow users to crud accounts, progress tracking, injuries / injury status and accomidations, goals and goal tracking
 
+// db notes
 // similar exercises should have the same workout_id in the exercises table ie legs should all have workout_id 2
-// match types and intensities in the workouts table with the correct corresponding workout_id value ie bench press workout_id values should be correlated to type strength in the workouts table
+// match types and intensities in the workouts table with the correct corresponding workout_id value in exercises table ie bench press workout_id values in exercises should be correlated to type strength in the workouts table
+// exercise_id's can / must be different as they are different exercises
