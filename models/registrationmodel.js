@@ -8,6 +8,13 @@ async function createUser(params) {
     `;
     return await db.run(sql, params);
 }
+async function deleteUser(user_id) {
+    let sql = `
+        DELETE FROM users WHERE user_id = ?
+    `;
+    return await db.run(sql, [user_id]);
+}
 module.exports = {
-    createUser
+    createUser,
+    deleteUser
 }

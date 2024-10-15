@@ -15,6 +15,7 @@ async function getUserPreferences(userId) {
         WHERE users.user_id = ?;
     `;
     const row = await db.get(sql, userId);
+    // const row = await db.get(sql, [userId]); // check that this works and use it
     console.log("User preferences fetched:", row);
     return row; // Return the fetched row
 }
@@ -32,6 +33,7 @@ async function getWorkouts(userId) {
         );
     `;
     return await db.all(sql, userId); // Await the promise
+    //return await db.all(sql, [userId]); // check that this works and use it
 }
 //added
 async function getUserFeedback(userId, workoutId) {
