@@ -8,6 +8,13 @@ async function createUser(params) {
     `;
     return await db.run(sql, params);
 }
+async function createPreferences(params) {
+    let sql = `
+        INSERT INTO user_preferences (preference_id, user_id, preferred_types, preferred_intensity, preferred_duration, preferred_exercise)
+        VALUES (?, ?, ?, ?, ?, ?);
+    `;
+    return await db.run(sql, params);
+}
 async function deleteUser(user_id) {
     let sql = `
         DELETE FROM users WHERE user_id = ?
@@ -48,5 +55,6 @@ module.exports = {
     updateUser,
     getUser,
     updatePreferences,
-    getPreferences
+    getPreferences,
+    createPreferences
 }

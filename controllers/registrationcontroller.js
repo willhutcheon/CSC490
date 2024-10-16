@@ -31,6 +31,27 @@ async function createUser(req, res, next) {
         res.status(400).send({ error: "Missing required fields" });
     }
 }
+async function createPreferences(req, res, next) {
+    let { preference_id, user_id, preferred_types, preferred_intensity, preferred_duration, preferred_exercise } = req.body;
+    user_id = parseInt(user_id, 10);
+    if (isNaN(user_id)) {
+        console.error("user_id is not a number:", req.body.user_id);
+        return res.status(400).send({ error: "User ID must be a number" });
+    }
+    if (preference_id && user_id && preferred_types && preferred_intensity && preferred_duration && preferred_exercise) {
+        let params = [preference_id, user_id, preferred_types, preferred_intensity, preferred_duration, preferred_exercise];
+        try {
+            await model.createPreferences(params);
+            res.status(201).send({ message: "User preferences created successfully" });
+        } catch (err) {
+            console.error("Error while creating a new user preferences, talk to Will", err.message);
+            res.status(500).send({ error: "Failed to create user preferences" });
+            next(err);
+        }
+    } else {
+        res.status(400).send({ error: "Missing required fields" });
+    }
+}
 async function updateUser(req, res, next) {
     let { user_id, fname, lname, username, email, fit_goal, exp_level } = req.body;
     user_id = parseInt(user_id, 10);
@@ -109,5 +130,6 @@ module.exports = {
     updateUser,
     getUser,
     updatePreferences,
-    getPreferences
+    getPreferences,
+    createPreferences
 }
