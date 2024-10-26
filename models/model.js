@@ -51,6 +51,15 @@ async function storeUserFeedback(userId, workoutId, rating, caloriesBurned) {
     `;
     return await db.run(sql, [userId, workoutId, rating, caloriesBurned]);
 }
+
+async function injuryRec(user_id) {
+    const sql = `
+        SELECT a.name 
+        FROM allWorkouts a , injuries b 
+        WHERE user_id = ? AND a.type <> b.type AND b.active = true;
+    `;
+    return await db.get(sql, [user_id]);
+}
 let QTable = {};
 function getQValue(state, action) {
     return QTable[state]?.[action] || 0;
@@ -84,7 +93,10 @@ function chooseAction(state, availableWorkouts) {
 }
 async function recommendWorkoutsWithRL(userPreferences, workouts, userId) {
     const state = userPreferences.fit_goal + userPreferences.exp_level; // Simple state representation
-    const availableWorkouts = workouts;
+    const availableWorkouts = injuryRec(user_id);
+    if (availableWorkouts.length = 0){
+        availableWorkouts = allWorkouts.name
+    }
     // Choose a workout (action) based on current state
     const recommendedWorkout = chooseAction(state, availableWorkouts);
     // After the workout, get feedback from the user
@@ -105,5 +117,6 @@ module.exports = {
     updateQValue,
     calculateReward,
     chooseAction,
-    recommendWorkoutsWithRL
+    recommendWorkoutsWithRL,
+    injuryRec
 }
